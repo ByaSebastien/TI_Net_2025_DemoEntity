@@ -12,7 +12,7 @@ using TI_Net_2025_DemoEntity.DAL.Contexts;
 namespace TI_Net_2025_DemoEntity.DAL.Migrations
 {
     [DbContext(typeof(DemoEntityContext))]
-    [Migration("20251007094440_init")]
+    [Migration("20251007115752_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -57,7 +57,7 @@ namespace TI_Net_2025_DemoEntity.DAL.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -265,9 +265,7 @@ namespace TI_Net_2025_DemoEntity.DAL.Migrations
                 {
                     b.HasOne("TI_Net_2025_DemoEntity.DL.Entities.User", "User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });

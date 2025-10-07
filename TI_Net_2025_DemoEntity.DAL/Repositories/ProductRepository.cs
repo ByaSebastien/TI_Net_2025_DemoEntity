@@ -1,0 +1,77 @@
+﻿using Microsoft.EntityFrameworkCore;
+using TI_Net_2025_DemoEntity.DAL.Contexts;
+using TI_Net_2025_DemoEntity.DL.Entities;
+
+namespace TI_Net_2025_DemoEntity.DAL.Repositories
+{
+    public class ProductRepository
+    {
+        private readonly DemoEntityContext _context;
+        private readonly DbSet<Product> _products;
+
+        public ProductRepository(DemoEntityContext context)
+        {
+            _context = context;
+            _products = context.Products;
+        }
+
+        public IEnumerable<Product> GetProducts(int page = 0, Func<Product,bool>? predicate = null)
+        {
+
+            IEnumerable<Product> query = _products;
+
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+
+            return query
+                .OrderBy(p => p.Name)
+                .Skip(page * 10)
+                .Take(10);
+        }
+
+        public Product? GetProduct(int id)
+        {
+            return _products
+                .Include(p => p.Stock)
+                .SingleOrDefault(p => p.Id == id);
+        }
+
+        public void Add(Product product)
+        {
+            _products.Add(product);
+            _context.SaveChanges();
+        }
+
+        public void Add(List<Product> products)
+        {
+            _products.AddRange(products);
+            _context.SaveChanges();
+        }
+
+        public void Update(int id, Product product)
+        { 
+            Product? existing = _products.SingleOrDefault(p => p.Id == id);
+
+            if (existing != null)
+            {
+                existing.Name = product.Name;
+                existing.Price = product.Price;
+                existing.AlcoholLevel = product.AlcoholLevel;
+                existing.Description = product.Description;
+                _context.SaveChanges();
+            }
+        }
+
+        public void Delete(int id)
+        {
+            Product? product = _products.SingleOrDefault(p => p.Id == id);
+            if(product != null)
+            {
+                _products.Remove(product);
+                _context.SaveChanges();
+            }
+        }
+    }
+}

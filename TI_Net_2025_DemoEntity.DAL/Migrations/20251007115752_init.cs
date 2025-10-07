@@ -108,7 +108,7 @@ namespace TI_Net_2025_DemoEntity.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Datte = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Discount = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -118,8 +118,7 @@ namespace TI_Net_2025_DemoEntity.DAL.Migrations
                         name: "FK_Order__User__UserId",
                         column: x => x.UserId,
                         principalTable: "User_",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(

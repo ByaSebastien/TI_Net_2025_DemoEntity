@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TI_Net_2025_DemoEntity.BLL\TI_Net_2025_DemoEntity.BLL.csproj" />
     <ProjectReference Include="..\TI_Net_2025_DemoEntity.DL\TI_Net_2025_DemoEntity.DL.csproj" />
   </ItemGroup>

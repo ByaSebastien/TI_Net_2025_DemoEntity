@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using TI_Net_2025_DemoEntity.BLL.Services;
 using TI_Net_2025_DemoEntity.DAL.Contexts;
+using TI_Net_2025_DemoEntity.DAL.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DemoEntityContext>(o =>
     o.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
 );
+
+builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
 

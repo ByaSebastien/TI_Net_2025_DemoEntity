@@ -54,7 +54,7 @@ namespace TI_Net_2025_DemoEntity.DAL.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -262,9 +262,7 @@ namespace TI_Net_2025_DemoEntity.DAL.Migrations
                 {
                     b.HasOne("TI_Net_2025_DemoEntity.DL.Entities.User", "User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
