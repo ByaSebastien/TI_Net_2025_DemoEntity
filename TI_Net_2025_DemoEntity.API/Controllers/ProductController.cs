@@ -44,6 +44,12 @@ namespace TI_Net_2025_DemoEntity.API.Controllers
             return NoContent();
         }
 
+        [HttpPost("many")]
+        public IActionResult AddMany([FromBody] List<ProductFormDto> list)
+        {
+            return NoContent();
+        }
+
         [HttpPut("{id}")]
         public IActionResult Update([FromRoute] int id, [FromBody] ProductFormDto form)
         {

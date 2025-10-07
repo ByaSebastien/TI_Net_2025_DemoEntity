@@ -25,7 +25,7 @@ namespace TI_Net_2025_DemoEntity.API.Mappers
                 Price = p.Price,
                 AlcoholLevel = p.AlcoholLevel,
                 Description = p.Description,
-                Quantity = p.Stock?.CurrentQuantity,
+                Quantity = p.Stock?.CurrentQuantity ?? 0,
             };
         }
 
