@@ -28,7 +28,7 @@ namespace TI_Net_2025_DemoEntity.DAL.Configs
 
             builder.HasMany(p => p.Movements)
                 .WithOne(m => m.Product)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.SetNull);
 
             builder.HasOne(p => p.Stock)
                 .WithOne(s => s.Product)
