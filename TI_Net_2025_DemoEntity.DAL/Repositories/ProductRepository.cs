@@ -15,7 +15,7 @@ namespace TI_Net_2025_DemoEntity.DAL.Repositories
             _products = context.Products;
         }
 
-        public IEnumerable<Product> GetProducts(int page = 0, Func<Product,bool>? predicate = null)
+        public IEnumerable<Product> GetProducts(int page = 0, Func<Product, bool>? predicate = null)
         {
 
             IEnumerable<Product> query = _products;
@@ -36,6 +36,8 @@ namespace TI_Net_2025_DemoEntity.DAL.Repositories
             return _products
                 .Include(p => p.Stock)
                 .SingleOrDefault(p => p.Id == id);
+
+            //return _products.Find(id);
         }
 
         public void Add(Product product)
@@ -50,28 +52,16 @@ namespace TI_Net_2025_DemoEntity.DAL.Repositories
             _context.SaveChanges();
         }
 
-        public void Update(int id, Product product)
-        { 
-            Product? existing = _products.SingleOrDefault(p => p.Id == id);
-
-            if (existing != null)
-            {
-                existing.Name = product.Name;
-                existing.Price = product.Price;
-                existing.AlcoholLevel = product.AlcoholLevel;
-                existing.Description = product.Description;
-                _context.SaveChanges();
-            }
+        public void Update(Product product)
+        {
+            _products.Update(product);
+            _context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Product product)
         {
-            Product? product = _products.SingleOrDefault(p => p.Id == id);
-            if(product != null)
-            {
-                _products.Remove(product);
-                _context.SaveChanges();
-            }
+            _products.Remove(product);
+            _context.SaveChanges();
         }
     }
 }

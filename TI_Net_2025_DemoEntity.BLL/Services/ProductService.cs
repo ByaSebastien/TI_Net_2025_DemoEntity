@@ -1,4 +1,5 @@
-﻿using TI_Net_2025_DemoEntity.DAL.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using TI_Net_2025_DemoEntity.DAL.Repositories;
 using TI_Net_2025_DemoEntity.DL.Entities;
 
 namespace TI_Net_2025_DemoEntity.BLL.Services
@@ -36,12 +37,31 @@ namespace TI_Net_2025_DemoEntity.BLL.Services
 
         public void Update(int id, Product product)
         {
-            _productRepository.Update(id, product);
+            Product? existing = _productRepository.GetProduct(id);
+
+            if (existing == null)
+            {
+                throw new Exception($"Product with id : {id} doesn't exist.");
+            }
+
+            existing.Name = product.Name;
+            existing.Price = product.Price;
+            existing.AlcoholLevel = product.AlcoholLevel;
+            existing.Description = product.Description;
+
+            _productRepository.Update(existing);
         }
 
         public void Delete(int id)
         {
-            _productRepository.Delete(id);
+            Product? existing = _productRepository.GetProduct(id);
+
+            if (existing == null)
+            {
+                throw new Exception($"Product with id : {id} doesn't exist.");
+            }
+
+            _productRepository.Delete(existing);
         }
     }
 }
