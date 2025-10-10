@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TI_Net_2025_DemoEntity.BLL.Exceptions.Product;
 using TI_Net_2025_DemoEntity.BLL.Services.Interfaces;
 using TI_Net_2025_DemoEntity.DAL.Repositories;
 using TI_Net_2025_DemoEntity.DAL.Repositories.Interfaces;
@@ -26,7 +27,7 @@ namespace TI_Net_2025_DemoEntity.BLL.Services
 
             if(product == null)
             {
-                throw new Exception($"Product with id : {id} doesn't exist");
+                throw new ProductNotFoundException($"Product with id : {id} doesn't exist");
             }
 
             return product;
@@ -43,7 +44,7 @@ namespace TI_Net_2025_DemoEntity.BLL.Services
 
             if (existing == null)
             {
-                throw new Exception($"Product with id : {id} doesn't exist.");
+                throw new ProductNotFoundException($"Product with id : {id} doesn't exist");
             }
 
             existing.Name = product.Name;
@@ -60,7 +61,7 @@ namespace TI_Net_2025_DemoEntity.BLL.Services
 
             if (existing == null)
             {
-                throw new Exception($"Product with id : {id} doesn't exist.");
+                throw new ProductNotFoundException($"Product with id : {id} doesn't exist");
             }
 
             _productRepository.Delete(existing);
