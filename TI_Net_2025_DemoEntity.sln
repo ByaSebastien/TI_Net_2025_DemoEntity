@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TI_Net_2025_DemoEntity.API", "TI_Net_2025_DemoEntity.API\TI_Net_2025_DemoEntity.API.csproj", "{C297C672-A05A-4C5C-9DDB-BAC1DB282319}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TI_Net_2025_DemoEntity.DAL", "TI_Net_2025_DemoEntity.DAL\TI_Net_2025_DemoEntity.DAL.csproj", "{FBD649EC-4F23-4CB5-A6B3-25720670CC4F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TI_Net_2025_DemoEntity.DL", "TI_Net_2025_DemoEntity.DL\TI_Net_2025_DemoEntity.DL.csproj", "{C09D8D6B-C8F1-4A6D-AFC5-271BF97BE471}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TI_Net_2025_DemoEntity.ToolBoxEF", "TI_Net_2025_DemoEntity.ToolBoxEF\TI_Net_2025_DemoEntity.ToolBoxEF.csproj", "{549EA9B3-6C31-4520-A6FB-4C5876668F77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C09D8D6B-C8F1-4A6D-AFC5-271BF97BE471}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C09D8D6B-C8F1-4A6D-AFC5-271BF97BE471}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C09D8D6B-C8F1-4A6D-AFC5-271BF97BE471}.Release|Any CPU.Build.0 = Release|Any CPU
+		{549EA9B3-6C31-4520-A6FB-4C5876668F77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{549EA9B3-6C31-4520-A6FB-4C5876668F77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{549EA9B3-6C31-4520-A6FB-4C5876668F77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{549EA9B3-6C31-4520-A6FB-4C5876668F77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

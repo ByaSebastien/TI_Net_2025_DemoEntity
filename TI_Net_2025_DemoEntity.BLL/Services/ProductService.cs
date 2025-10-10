@@ -1,14 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TI_Net_2025_DemoEntity.BLL.Services.Interfaces;
 using TI_Net_2025_DemoEntity.DAL.Repositories;
+using TI_Net_2025_DemoEntity.DAL.Repositories.Interfaces;
 using TI_Net_2025_DemoEntity.DL.Entities;
 
 namespace TI_Net_2025_DemoEntity.BLL.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
-        private readonly ProductRepository _productRepository;
+        private readonly IProductRepository _productRepository;
 
-        public ProductService(ProductRepository productRepository)
+        public ProductService(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
@@ -20,7 +22,7 @@ namespace TI_Net_2025_DemoEntity.BLL.Services
 
         public Product GetProduct(int id)
         {
-            Product? product = _productRepository.GetProduct(id);
+            Product? product = _productRepository.FindOne(id);
 
             if(product == null)
             {
@@ -37,7 +39,7 @@ namespace TI_Net_2025_DemoEntity.BLL.Services
 
         public void Update(int id, Product product)
         {
-            Product? existing = _productRepository.GetProduct(id);
+            Product? existing = _productRepository.FindOne(id);
 
             if (existing == null)
             {
@@ -54,7 +56,7 @@ namespace TI_Net_2025_DemoEntity.BLL.Services
 
         public void Delete(int id)
         {
-            Product? existing = _productRepository.GetProduct(id);
+            Product? existing = _productRepository.FindOne(id);
 
             if (existing == null)
             {

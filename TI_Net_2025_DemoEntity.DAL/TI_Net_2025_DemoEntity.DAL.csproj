@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TI_Net_2025_DemoEntity.DL\TI_Net_2025_DemoEntity.DL.csproj" />
+    <ProjectReference Include="..\TI_Net_2025_DemoEntity.ToolBoxEF\TI_Net_2025_DemoEntity.ToolBoxEF.csproj" />
   </ItemGroup>
 
 </Project>

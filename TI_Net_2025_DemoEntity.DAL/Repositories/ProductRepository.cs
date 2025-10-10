@@ -1,24 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TI_Net_2025_DemoEntity.DAL.Contexts;
+using TI_Net_2025_DemoEntity.DAL.Repositories.Interfaces;
 using TI_Net_2025_DemoEntity.DL.Entities;
+using TI_Net_2025_DemoEntity.ToolBoxEF.Repositories;
 
 namespace TI_Net_2025_DemoEntity.DAL.Repositories
 {
-    public class ProductRepository
+    public class ProductRepository: BaseRepository<Product>, IProductRepository
     {
-        private readonly DemoEntityContext _context;
-        private readonly DbSet<Product> _products;
-
-        public ProductRepository(DemoEntityContext context)
-        {
-            _context = context;
-            _products = context.Products;
-        }
+        public ProductRepository(DemoEntityContext context) : base(context) { }
 
         public IEnumerable<Product> GetProducts(int page = 0, Func<Product, bool>? predicate = null)
         {
 
-            IEnumerable<Product> query = _products;
+            IEnumerable<Product> query = _entities;
 
             if (predicate != null)
             {
@@ -29,39 +24,6 @@ namespace TI_Net_2025_DemoEntity.DAL.Repositories
                 .OrderBy(p => p.Name)
                 .Skip(page * 10)
                 .Take(10);
-        }
-
-        public Product? GetProduct(int id)
-        {
-            return _products
-                .Include(p => p.Stock)
-                .SingleOrDefault(p => p.Id == id);
-
-            //return _products.Find(id);
-        }
-
-        public void Add(Product product)
-        {
-            _products.Add(product);
-            _context.SaveChanges();
-        }
-
-        public void Add(List<Product> products)
-        {
-            _products.AddRange(products);
-            _context.SaveChanges();
-        }
-
-        public void Update(Product product)
-        {
-            _products.Update(product);
-            _context.SaveChanges();
-        }
-
-        public void Delete(Product product)
-        {
-            _products.Remove(product);
-            _context.SaveChanges();
         }
     }
 }

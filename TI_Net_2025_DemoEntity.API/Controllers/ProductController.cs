@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TI_Net_2025_DemoEntity.API.Mappers;
 using TI_Net_2025_DemoEntity.API.Models.Product;
 using TI_Net_2025_DemoEntity.BLL.Services;
+using TI_Net_2025_DemoEntity.BLL.Services.Interfaces;
 
 namespace TI_Net_2025_DemoEntity.API.Controllers
 {
@@ -11,9 +11,9 @@ namespace TI_Net_2025_DemoEntity.API.Controllers
     public class ProductController : ControllerBase
     {
 
-        private readonly ProductService _productService;
+        private readonly IProductService _productService;
 
-        public ProductController(ProductService productService)
+        public ProductController(IProductService productService)
         {
             _productService = productService;
         }
